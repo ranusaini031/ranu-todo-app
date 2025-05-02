@@ -1,0 +1,108 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: red;
+            text-align: center;
+        }
+        .container{
+            background-color: greenyellow;
+            width: 400px;
+            margin: 40px auto;
+            padding: 30px 20px;
+        }
+        .task-input{
+            background-color: aquamarine;
+            width: 100%;
+            height: 40px;
+            margin: 20px 0;
+
+        }
+    .task-input input{
+        width: 70%;
+        height: 100%;
+        padding: 0 12px;
+
+    }
+    .task-input button{
+        width: 25%;
+        height: 100%;
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        font-weight: 600;
+        border: 0;
+
+    }
+    #task-list li{
+        background-color: black;
+        margin: 12px auto;
+        padding: 10px;
+        list-style: none;
+        width: 100%;
+        background-color: red;
+        display: flex;
+        justify-content: space-between;
+
+
+
+    }
+    #task-input i{
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>To do app</h2>
+        <div class="task-input">
+            <input type="text" placeholder="enter task" id="input">
+            <button id="admin" onclick="addtask()">Add task</button>
+        </div>
+        <div id="task-list">
+            <!-- <li>ggg</li> -->
+            <!-- <p>hello</p>/ -->
+        </div>
+    </div>
+    <script>
+        let input =document.getElementById('input');
+        let admin =document.getElementById('admin');
+
+        function addtask(){
+            if(input.value==''){
+                alert('please enter a task');
+                return;
+            }
+            else{
+                let list=document.getElementById('task-list');
+                let newElem=document.createElement('li');
+                newElem.innerHTML=`${input.value}<i class="fa-solid fa-trash" onclick="delettask(this)"></i>  `
+                input.value='';
+                list.appendChild(newElem);
+
+            }
+        }
+        function delettask(icon){
+            let  taskinput=icon.parentElement;
+            taskinput.remove();
+
+        }
+
+
+    </script>
+    
+</body>
+</html>
